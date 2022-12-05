@@ -24,7 +24,7 @@ class Status extends Component
         Transaction::whereStatus('complete')->whereSandbox(false)->whereNotNull('callback')->get()->each(function ($model) {
             $r = $this->visit($model);
             Page::create([
-                'url' => $model->merchant_reference,
+                'url' => $model->merchant_reference??$model->reference,
                 'reference' => $model->reference,
                 'status' => $r['status'],
                 'isCrawled' => true,
