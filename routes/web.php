@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Candidate;
+use App\Notifications\TestNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/qr', function () {
+    return view('qr', [
+        'candidates' => Candidate::paginate()
+    ]);
+});
+
+Route::get('/dl/{url}', function ($url) {
+    return Storage::download('public/'.$url);
+})->name('download');
