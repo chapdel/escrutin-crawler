@@ -3,16 +3,15 @@
 namespace App\Exports;
 
 use App\Models\Candidate;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 
-class CandidatessExport implements FromCollection
+class CandidatessExport implements FromQuery, WithMapping, WithColumnWidths
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function query()
     {
-        return Candidate::all();
+        return Candidate::query();
     }
 
     public function map($model): array
@@ -27,10 +26,9 @@ class CandidatessExport implements FromCollection
     public function columnWidths(): array
     {
         return [
-            'A' => 120,
-            'B' => 120,
-            'C' => 120,
+            'A' => 60,
+            'B' => 40,
+            'C' => 20,
         ];
     }
-
 }
