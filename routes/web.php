@@ -28,7 +28,5 @@ Route::get('/qr', function () {
 });
 
 Route::get('/dl/{url}', function ($url) {
-    Storage::download('public/'.$url);
-
-    return view('t');
+    return Storage::download('public/'.$url);
 })->name('download');

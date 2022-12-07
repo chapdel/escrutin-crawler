@@ -60,10 +60,12 @@
             </svg>
         </div>
 
+        <div>
+            <livewire:generate-excell />
+        </div>
+
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg ">
-
             <div class="overflow-x-auto relative">
-
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -102,7 +104,7 @@
         {{ $candidates->links()}}
         </div>
     </div>
-
+@livewireScripts
 </body>
 
 </html>
